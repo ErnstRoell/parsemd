@@ -20,7 +20,7 @@ jobs:
           table_name: "markdowntable"
           partition_key: "0001"
           row_key: "1"
-          data: "${{ steps.parsemd.outputs.DATA }}"
+          data: "\"${{ steps.parsemd.outputs.DATA }}\""
           if_exists: 'replace'
           extra_args: ''
           connection_string: ${{ secrets.AzureStorageConnectionString }}

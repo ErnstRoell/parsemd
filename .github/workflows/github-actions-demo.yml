@@ -15,7 +15,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          data=$(cat /github/workspace/docs/test.md | sed -z 's/\n/\\n/g')
+          data=$(cat /home/runner/work/parsemd/parsemd/docs/test.md | sed -z 's/\n/\\n/g')
           json={\"data\":\"$data\"}
           echo $json
           curl "https://parsemd.azurewebsites.net/api/parse-md?code=AlFkf0xP564jWIx9X1aMphBE/Tx9lADvS5lNRNoj5VnGpehU4euHKQ==" \

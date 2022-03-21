@@ -13,14 +13,11 @@ jobs:
           data=$(cat /home/runner/work/parsemd/parsemd/docs/test.md | sed -z 's/\n/\\n/g')
           echo "::set-output name=DATA::$data"
         id: parsemd
-      - name: Get color
-        run: echo "The selected color is ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}"
       - uses: LadyCailin/azure-table-storage-upload@v1.0.0
         with:
           table_name: "markdowntable"
           partition_key: "0001"
           row_key: "1"
-          data: "column1=whatever column2=\"whatever with spaces\""
           if_exists: 'replace'
           extra_args: ''
           connection_string: ${{ secrets.AzureStorageConnectionString }}
